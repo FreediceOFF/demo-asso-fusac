@@ -1,6 +1,6 @@
 ---
 titre: Contentieux économique
-code: UE2
+code: UE 2.1
 annee: M1
 semestre: Semestre 1
 heures: 20
