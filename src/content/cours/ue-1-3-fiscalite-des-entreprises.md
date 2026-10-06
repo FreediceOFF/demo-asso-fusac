@@ -1,6 +1,6 @@
 ---
 titre: Concurrence
-code: UE1
+code: UE 1.3
 annee: M1
 semestre: Semestre 1
 heures: 30
