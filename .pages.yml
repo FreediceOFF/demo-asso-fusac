@@ -1,0 +1,310 @@
+# Configuration de l'administration Pages CMS (https://pagescms.org)
+# Chaque bloc ci-dessous devient une rubrique du menu de l'administration.
+
+media:
+  input: src/images
+  output: /images
+
+content:
+  # ------------------------------------------------------------------
+  - name: promotions
+    label: Promotions
+    type: collection
+    path: src/content/promotions
+    format: yaml-frontmatter
+    view:
+      fields: [titre, statut]
+      primary: titre
+      sort: annee
+      order: desc
+    fields:
+      - { name: titre, label: Titre, type: string, required: true, description: "Ex. : Promotion 2028" }
+      - { name: annee, label: Année de diplôme, type: string, required: true, description: "Ex. : 2028. Sert à relier les élèves à la promotion." }
+      - name: statut
+        label: Statut
+        type: select
+        options:
+          values: [En M1, En M2, Diplômée]
+      - { name: parrain, label: Parrain, type: string }
+      - { name: photo, label: Photo de promo, type: image, description: "Format paysage, idéalement 2400 × 1000 px." }
+
+  # ------------------------------------------------------------------
+  - name: eleves
+    label: Élèves
+    type: collection
+    path: src/content/eleves
+    format: yaml-frontmatter
+    view:
+      fields: [prenom, nom, promotion]
+      primary: nom
+      sort: nom
+    fields:
+      - { name: prenom, label: Prénom, type: string, required: true }
+      - { name: nom, label: Nom, type: string, required: true }
+      - name: promotion
+        label: Promotion
+        type: reference
+        required: true
+        options:
+          collection: promotions
+          value: "{fields.annee}"
+          label: "{fields.titre}"
+      - { name: photo, label: Photo, type: image, description: "Portrait carré. Sans photo, les initiales s'affichent." }
+      - { name: formation_initiale, label: Formation initiale, type: string, description: "Affichée sous la photo dans le trombinoscope. Ex. : Licence de droit" }
+      - { name: poste_actuel, label: Poste actuel, type: string, description: "Pour les diplômés uniquement. Ex. : Collaborateur M&A · Nom du cabinet" }
+      - { name: linkedin, label: Profil LinkedIn, type: string }
+      - name: parcours
+        label: Parcours
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{dates} · {titre}"
+        fields:
+          - { name: dates, label: Dates, type: string }
+          - { name: titre, label: Diplôme, type: string }
+          - { name: detail, label: Précision, type: string }
+      - name: stages
+        label: Stages
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{dates} · {titre}"
+        fields:
+          - { name: dates, label: Dates, type: string }
+          - { name: titre, label: Structure et poste, type: string }
+          - { name: detail, label: Précision, type: string }
+      - name: publications
+        label: Publications
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{annee} · {reference}"
+        fields:
+          - { name: annee, label: Année, type: string }
+          - { name: reference, label: Référence, type: string }
+
+  # ------------------------------------------------------------------
+  - name: partenaires
+    label: Partenaires
+    type: collection
+    path: src/content/partenaires
+    format: yaml-frontmatter
+    view:
+      fields: [nom, type, ordre]
+      primary: nom
+      sort: ordre
+    fields:
+      - { name: nom, label: Nom, type: string, required: true }
+      - { name: logo, label: Logo, type: image, description: "PNG ou SVG sur fond transparent. Sans logo, le nom s'affiche." }
+      - { name: type, label: Activité, type: string, description: "Ex. : Cabinet d'avocats d'affaires" }
+      - { name: ville, label: Implantation, type: string }
+      - { name: depuis, label: Partenaire depuis, type: string }
+      - { name: ordre, label: Ordre d'affichage, type: number, description: "1, 2, 3… Les quatre premiers apparaissent sur l'accueil." }
+      - { name: site_web, label: Site web, type: string }
+      - { name: avec_asso, label: Rôle auprès de l'asso, type: text }
+      - { name: body, label: Description, type: rich-text }
+
+  # ------------------------------------------------------------------
+  - name: actualites
+    label: Actualités
+    type: collection
+    path: src/content/actualites
+    format: yaml-frontmatter
+    view:
+      fields: [titre, date_publication]
+      primary: titre
+      sort: date_publication
+      order: desc
+    fields:
+      - { name: titre, label: Titre, type: string, required: true }
+      - name: date_publication
+        label: Date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: categorie
+        label: Catégorie
+        type: select
+        options:
+          values: [Événement, Conférence, Compétition, Voyage, Projet 1, Diplômés, Partenaires, Vie du Master]
+      - { name: image, label: Image, type: image, description: "Format paysage (16:10)." }
+      - { name: chapeau, label: Résumé, type: text, description: "Une ou deux phrases, affichées dans les listes." }
+      - { name: body, label: Article, type: rich-text }
+
+  # ------------------------------------------------------------------
+  - name: videos
+    label: "Projet 1 · Vidéos"
+    type: collection
+    path: src/content/videos
+    format: yaml-frontmatter
+    view:
+      fields: [titre, date_publication]
+      primary: titre
+      sort: date_publication
+      order: desc
+    fields:
+      - { name: titre, label: Sujet du débat, type: string, required: true }
+      - { name: youtube, label: Lien YouTube, type: string, description: "Adresse de la vidéo. La plus récente s'affiche en grand avec le lecteur." }
+      - name: date_publication
+        label: Date de publication
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - { name: episode, label: Épisode, type: string, description: "Ex. : S2 · E4" }
+      - { name: pour, label: Débatteur « Pour », type: string }
+      - { name: contre, label: Débatteur « Contre », type: string }
+      - { name: duree, label: Durée, type: string, description: "Ex. : 14:32" }
+      - { name: miniature, label: Miniature personnalisée, type: image, description: "Facultatif : sinon, la miniature YouTube est utilisée." }
+
+  # ------------------------------------------------------------------
+  - name: cours
+    label: Cours
+    type: collection
+    path: src/content/cours
+    format: yaml-frontmatter
+    view:
+      fields: [code, titre, semestre]
+      primary: titre
+      sort: code
+    fields:
+      - { name: titre, label: Intitulé, type: string, required: true }
+      - { name: code, label: Code, type: string, description: "Ex. : UE 1.1" }
+      - name: annee
+        label: Année
+        type: select
+        options:
+          values: [M1, M2]
+      - name: semestre
+        label: Semestre
+        type: select
+        options:
+          values: [Semestre 1, Semestre 2, Semestre 3, Semestre 4]
+      - { name: heures, label: Heures de cours, type: number }
+      - { name: ects, label: ECTS, type: number }
+      - { name: ordre, label: Ordre dans le semestre, type: number }
+      - { name: description, label: Description, type: text }
+
+  # ------------------------------------------------------------------
+  - name: accueil
+    label: Page d'accueil
+    type: file
+    path: src/_data/accueil.json
+    format: json
+    fields:
+      - { name: surtitre, label: Surtitre, type: string }
+      - { name: accroche, label: Texte d'introduction, type: text }
+      - { name: presentation_titre, label: Titre « Le Master », type: string }
+      - { name: presentation, label: Présentation du Master, type: text, description: "Laissez une ligne vide entre deux paragraphes." }
+      - name: objectifs
+        label: Objectifs de formation
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{titre}"
+        fields:
+          - { name: etape, label: Mot-clé, type: string }
+          - { name: titre, label: Titre, type: string }
+          - { name: texte, label: Texte, type: text }
+      - { name: mot_citation, label: Mot des directeurs · citation, type: text }
+      - { name: mot_texte, label: Mot des directeurs · texte, type: text }
+
+  - name: formation
+    label: Page Formation
+    type: file
+    path: src/_data/formation.json
+    format: json
+    fields:
+      - { name: introduction, label: Introduction, type: text }
+      - name: infos
+        label: Encadrés
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Intitulé, type: string }
+          - { name: valeur, label: Valeur, type: string }
+          - { name: detail, label: Précision, type: string }
+
+  - name: equipe
+    label: Les Directeurs
+    type: file
+    path: src/_data/equipe.json
+    format: json
+    fields:
+      - { name: introduction, label: Introduction, type: text }
+      - name: directeurs
+        label: Directeurs
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{nom}"
+        fields:
+          - { name: nom, label: Nom, type: string }
+          - { name: fonction, label: Fonction, type: string }
+          - { name: role, label: Rôle dans le Master, type: string }
+          - { name: photo, label: Portrait, type: image }
+          - { name: biographie, label: Biographie, type: text }
+          - { name: themes, label: Thèmes de recherche, type: string, list: true }
+          - name: travaux
+            label: Travaux récents
+            type: object
+            list: true
+            fields:
+              - { name: annee, label: Année, type: string }
+              - { name: reference, label: Référence, type: string }
+
+  - name: association
+    label: Page Association
+    type: file
+    path: src/_data/association.json
+    format: json
+    fields:
+      - { name: introduction, label: Introduction, type: text }
+      - name: activites
+        label: Activités
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{titre}"
+        fields:
+          - { name: periode, label: Période, type: string }
+          - { name: titre, label: Titre, type: string }
+          - { name: texte, label: Texte, type: text }
+      - { name: mandat, label: Mandat du bureau, type: string }
+      - name: bureau
+        label: Bureau
+        type: object
+        list: true
+        fields:
+          - { name: poste, label: Poste, type: string }
+          - { name: nom, label: Nom, type: string }
+      - { name: projet_intro, label: Présentation du Projet 1, type: text }
+
+  - name: site
+    label: Réglages du site
+    type: file
+    path: src/_data/site.json
+    format: json
+    fields:
+      - { name: nom, label: Nom de l'association, type: string }
+      - { name: sous_titre, label: Sous-titre du logo, type: string }
+      - { name: description, label: Description (pied de page et Google), type: text }
+      - { name: bandeau_demo, label: Afficher le bandeau « Prototype », type: boolean }
+      - { name: texte_bandeau, label: Texte du bandeau, type: string }
+      - { name: projet_menu, label: Nom du Projet 1 dans le menu, type: string }
+      - { name: email_contact, label: E-mail de contact, type: string }
+      - { name: email_partenariats, label: E-mail partenariats, type: string }
+      - { name: adresse, label: Adresse, type: string }
+      - { name: linkedin, label: Lien LinkedIn, type: string }
+      - { name: instagram, label: Lien Instagram, type: string }
+      - { name: youtube, label: Lien de la chaîne YouTube, type: string }
+      - { name: couleur_accent, label: Couleur d'accent (rouge), type: string, description: "Code hexadécimal, ex. #C3102C" }
+      - { name: couleur_encre, label: Couleur des textes (noir), type: string, description: "Ex. #141112" }
+      - { name: couleur_fond, label: Couleur de fond (blanc), type: string, description: "Ex. #FBFAF9" }
