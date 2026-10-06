@@ -1,6 +1,6 @@
 ---
 titre: Comptabilité (avec TD)
-code: UE1.1
+code: UE 1.1
 annee: M1
 semestre: Semestre 1
 heures: 45
