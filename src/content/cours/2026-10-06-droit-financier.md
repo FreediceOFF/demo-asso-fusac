@@ -1,6 +1,6 @@
 ---
 titre: Droit financier
-code: UE2
+code: UE 2.2
 annee: M1
 semestre: Semestre 1
 heures: 20
