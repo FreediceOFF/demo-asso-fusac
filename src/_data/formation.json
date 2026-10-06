@@ -1,8 +1,25 @@
 {
   "introduction": "Deux années pour maîtriser le droit des opérations de fusions-acquisitions, du premier contact avec la cible jusqu'à l'intégration post-closing.",
   "infos": [
-    { "label": "Durée", "valeur": "2 ans · 120 ECTS", "detail": "M1 puis M2, en formation initiale" },
-    { "label": "Admission", "valeur": "Sur dossier et entretien", "detail": "Licence en droit ou équivalent" },
-    { "label": "Stages", "valeur": "2 à 6 mois", "detail": "Un stage en M1, un stage de fin d'études en M2" }
+    {
+      "label": "Durée",
+      "valeur": "2 ans · 120 ECTS",
+      "detail": "M1 en formation initiale puis M2 en alternance"
+    },
+    {
+      "label": "Admission",
+      "valeur": "Sur dossier et entretien",
+      "detail": "Licence en droit ou équivalent"
+    },
+    {
+      "label": "Stages",
+      "valeur": "2 à 4 mois en L1",
+      "detail": "Un stage en M1"
+    },
+    {
+      "label": "Alternance",
+      "valeur": "En M2",
+      "detail": "Suivant un rythme : 3 semaines en structure d'accueil / 1 semaine à l'université"
+    }
   ]
 }
