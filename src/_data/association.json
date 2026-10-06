@@ -1,0 +1,21 @@
+{
+  "introduction": "L'Asso FusAc rassemble les étudiants et diplômés du Master. Elle organise des événements, entretient le lien avec les partenaires et porte des projets étudiants.",
+  "activites": [
+    { "periode": "Chaque septembre", "titre": "Gala de rentrée", "texte": "Soirée qui réunit étudiants, diplômés, enseignants et partenaires pour ouvrir l'année." },
+    { "periode": "Une fois par mois", "titre": "Afterworks cabinets", "texte": "Rencontres informelles dans les locaux d'un partenaire pour découvrir le quotidien d'une équipe M&A." },
+    { "periode": "Toute l'année", "titre": "Parrainage M1 / M2", "texte": "Chaque étudiant de M1 est accompagné par un M2 pour les candidatures de stage et les examens." },
+    { "periode": "Printemps", "titre": "Conférence annuelle", "texte": "Un thème d'actualité du droit des affaires débattu par des praticiens et des universitaires." },
+    { "periode": "Mars", "titre": "Voyage d'études", "texte": "Trois jours dans une place financière européenne : Londres, Luxembourg ou Bruxelles." },
+    { "periode": "Juin", "titre": "Simulation de négociation", "texte": "Une opération fictive complète, de la data room à la signature du SPA, jugée par des professionnels." }
+  ],
+  "mandat": "Mandat 2026–2027",
+  "bureau": [
+    { "poste": "Présidence", "nom": "Camille Rousset" },
+    { "poste": "Vice-présidence", "nom": "Théo Garnier" },
+    { "poste": "Trésorerie", "nom": "Inès Belkacem" },
+    { "poste": "Secrétariat", "nom": "Lucas Perrin" },
+    { "poste": "Pôle partenariats", "nom": "Manon Vidal" },
+    { "poste": "Pôle communication", "nom": "Hugo Lemaire" }
+  ],
+  "projet_intro": "Deux étudiants, une question de droit des affaires, une position chacun. Des débats courts pour comprendre les enjeux d'une clause, d'une réforme ou d'une pratique de marché."
+}

@@ -1,0 +1,14 @@
+{
+  "surtitre": "Master Fusions-Acquisitions · Université Jean Moulin Lyon 3",
+  "accroche": "Le Master forme en deux ans des juristes capables de mener une opération de haut de bilan de la lettre d'intention au closing : cessions, restructurations, LBO et offres publiques. L'Asso FusAc fait vivre la formation au-delà des cours.",
+  "presentation_titre": "Une formation tournée vers la pratique des opérations",
+  "presentation": "Le Master Fusions-Acquisitions de l'Université Jean Moulin Lyon 3 réunit chaque année une promotion restreinte d'étudiants autour du droit des opérations de croissance externe et de restructuration.\n\nLes enseignements sont assurés par des universitaires et par des praticiens : avocats d'affaires, banquiers, notaires et directeurs juridiques. Ateliers de rédaction, revue de data room et simulation de négociation complètent les cours magistraux.\n\nLes stages en cabinet, en banque d'affaires ou en fonds d'investissement ponctuent les deux années et préparent directement à l'insertion professionnelle ou au CRFPA.",
+  "objectifs": [
+    { "etape": "Signing", "titre": "Structurer une opération", "texte": "Choisir entre cession, apport ou fusion, et en mesurer les conséquences juridiques et fiscales." },
+    { "etape": "Due diligence", "titre": "Auditer une cible", "texte": "Analyser une data room et identifier les risques qui pèsent sur le prix ou sur la réalisation de l'opération." },
+    { "etape": "SPA", "titre": "Rédiger et négocier", "texte": "Rédiger lettre d'intention, protocole de cession et garantie d'actif et de passif, en français comme en anglais." },
+    { "etape": "Closing", "titre": "Sécuriser la réalisation", "texte": "Maîtriser les conditions suspensives, le contrôle des concentrations et les formalités de réalisation." }
+  ],
+  "mot_citation": "Une opération réussie repose sur des juristes rigoureux, curieux et capables de travailler en équipe. C'est ce que nous cherchons à former.",
+  "mot_texte": "Depuis sa création, le Master s'attache à rapprocher l'université et la pratique. Nos étudiants rencontrent dès le premier semestre les professionnels avec lesquels ils travailleront demain.\n\nNous remercions l'Asso FusAc qui, par ses événements et ses projets, donne à chaque promotion une identité et un réseau qui durent bien après le diplôme."
+}

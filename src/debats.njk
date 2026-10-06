@@ -1,0 +1,36 @@
+---
+layout: base.njk
+section: debats
+titre_page: Les Débats FusAc
+permalink: /debats/
+---
+{% import "macros.njk" as m %}
+{% set f = collections.videos[0] %}
+<section class="page-hero"><div class="wrap fade">
+  <div class="eyebrow">{{ site.projet_menu | firstPart(" · ") }} · Chaîne YouTube</div>
+  <h1>Les Débats FusAc</h1>
+  <p class="lead">{{ association.projet_intro }}</p>
+  {% if f %}
+  {% set id = f.data.youtube | youtubeId %}
+  {% if id %}
+  <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/{{ id }}" title="{{ f.data.titre }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+  {% else %}
+  <a class="feature" href="{{ site.youtube }}" target="_blank" rel="noopener" aria-label="Regarder sur YouTube : {{ f.data.titre }}">{{ m.thumb(f) }}<span class="play"></span></a>
+  {% endif %}
+  <div class="fmeta">
+    <div><span class="tag">Dernier épisode{% if f.data.episode %} · {{ f.data.episode }}{% endif %}</span><h2 style="margin-top:14px">{{ f.data.titre }}</h2></div>
+    <div style="display:grid;gap:10px;justify-items:start">
+      {% if f.data.pour %}<div class="vs"><b>{{ f.data.pour }}</b><i>POUR</i><span>vs</span><i>CONTRE</i><b>{{ f.data.contre }}</b></div>{% endif %}
+      <span class="mono muted" style="font-size:13px">{{ f.data.date_publication | dateFr }}{% if f.data.duree %} · {{ f.data.duree }}{% endif %}</span>
+      <a class="btn red" href="{{ f.data.youtube or site.youtube }}" target="_blank" rel="noopener">Regarder sur YouTube ↗</a>
+    </div>
+  </div>
+  {% endif %}
+</div></section>
+{% set anciens = collections.videos | skip(1) %}
+{% if anciens.length %}
+<section class="blk" style="border-bottom:0"><div class="wrap">
+  <div class="head"><div><span class="eyebrow">Épisodes précédents</span><h2>Tous les débats</h2></div>{% if site.youtube %}<a class="btn" href="{{ site.youtube }}" target="_blank" rel="noopener">La chaîne ↗</a>{% endif %}</div>
+  <div class="vgrid">{% for v in anciens %}<a class="vcard" href="{{ v.data.youtube or site.youtube }}" target="_blank" rel="noopener"><div class="th">{{ m.thumb(v) }}{% if v.data.duree %}<span class="dur">{{ v.data.duree }}</span>{% endif %}</div><span class="m">{{ v.data.episode }}{% if v.data.episode %} · {% endif %}{{ v.data.date_publication | dateFr }}</span><h3>{{ v.data.titre }}</h3>{% if v.data.pour %}<div class="vs"><span>{{ v.data.pour }} <i>vs</i> {{ v.data.contre }}</span></div>{% endif %}</a>{% endfor %}</div>
+</div></section>
+{% endif %}

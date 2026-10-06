@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if titre_page %}{{ titre_page }} · {% endif %}{{ site.nom }}</title>
+<meta name="description" content="{{ description_page or site.description }}">
+<meta property="og:title" content="{% if titre_page %}{{ titre_page }} · {% endif %}{{ site.nom }}">
+<meta property="og:description" content="{{ description_page or site.description }}">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23C3102C'/%3E%3Ctext x='16' y='24' font-family='Arial' font-weight='900' font-size='22' fill='white' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/css/style.css">
+<style>:root{--red:{{ site.couleur_accent or '#C3102C' }};--ink:{{ site.couleur_encre or '#141112' }};--paper:{{ site.couleur_fond or '#FBFAF9' }}}</style>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+{% if site.bandeau_demo %}<div class="demo-bar"><b>Prototype</b> · {{ site.texte_bandeau | replace("Prototype · ", "") }}</div>{% endif %}
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="/" aria-label="Accueil {{ site.nom }}">
+      <span class="mark">{{ site.nom | replace("Asso ", "") | first }}</span>
+      <span class="brand-txt"><b>{{ site.nom }}</b><span>{{ site.sous_titre }}</span></span>
+    </a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="main" id="nav" aria-label="Navigation principale">
+      {%- set liens = [["/", "Accueil", "accueil"], ["/formation/", "Formation", "formation"], ["/promotions/", "Promotions", "promotions"], ["/directeurs/", "Les Directeurs", "directeurs"], ["/partenaires/", "Partenaires", "partenaires"], ["/actualites/", "Actualités", "actualites"], ["/association/", "Association", "association"]] %}
+      {%- for l in liens %}
+      <a href="{{ l[0] }}"{% if section == l[2] %} class="on" aria-current="page"{% endif %}>{{ l[1] }}</a>
+      {%- endfor %}
+      <a href="/debats/" class="proj{% if section == 'debats' %} on{% endif %}">{{ site.projet_menu }}</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+{{ content | safe }}
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="brand" href="/"><span class="mark">{{ site.nom | replace("Asso ", "") | first }}</span><span class="brand-txt"><b>{{ site.nom }}</b><span style="color:inherit;opacity:.6">Lyon 3</span></span></a>
+        <p style="margin-top:18px;font-size:14px;opacity:.7;max-width:34ch">{{ site.description }}</p>
+      </div>
+      <div><h4>Le Master</h4><ul><li><a href="/formation/">Formation</a></li><li><a href="/directeurs/">Les Directeurs</a></li><li><a href="/promotions/">Promotions</a></li></ul></div>
+      <div><h4>L'association</h4><ul><li><a href="/association/">Activités</a></li><li><a href="/debats/">{{ site.projet_menu }}</a></li><li><a href="/actualites/">Actualités</a></li><li><a href="/partenaires/">Partenaires</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>{{ site.email_contact }}</li>
+        {% if site.linkedin %}<li><a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn ↗</a></li>{% endif %}
+        {% if site.instagram %}<li><a href="{{ site.instagram }}" target="_blank" rel="noopener">Instagram ↗</a></li>{% endif %}
+        {% if site.youtube %}<li><a href="{{ site.youtube }}" target="_blank" rel="noopener">YouTube ↗</a></li>{% endif %}
+      </ul></div>
+    </div>
+    <div class="fine"><span>© {{ annee }} {{ site.nom }} · Association loi 1901</span><a href="/mentions-legales/">Mentions légales</a></div>
+  </div>
+</footer>
+<script src="/js/main.js"></script>
+</body>
+</html>

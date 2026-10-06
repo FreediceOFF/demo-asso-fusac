@@ -1,0 +1,17 @@
+---
+layout: base.njk
+section: directeurs
+titre_page: Les Directeurs
+permalink: /directeurs/
+---
+{% import "macros.njk" as m %}
+{{ m.hero("Le Master", "Les Directeurs", equipe.introduction) }}
+<div class="wrap">{% for d in equipe.directeurs %}<article class="dir fade">
+  <div class="port">{% if d.photo %}<img src="{{ d.photo }}" alt="{{ d.nom }}">{% else %}{{ d.nom | replace("Pr. ", "") | initiales(d.nom.split(" ") | last) }}{% endif %}</div>
+  <div>
+    <h2>{{ d.nom }}</h2><div class="role">{{ d.fonction }} · {{ d.role }}</div>
+    <div class="prose">{{ d.biographie | paras | safe }}</div>
+    {% if d.themes.length %}<div class="themes">{% for t in d.themes %}<span>{{ t }}</span>{% endfor %}</div>{% endif %}
+    {% if d.travaux.length %}<h3 style="font-size:20px;margin-bottom:8px">Travaux récents</h3>
+    <ul class="pubs">{% for p in d.travaux %}<li><span class="y">{{ p.annee }}</span><span>{{ p.reference }}</span></li>{% endfor %}</ul>{% endif %}
+  </div></article>{% endfor %}</div><div style="height:72px"></div>

@@ -1,0 +1,10 @@
+---
+layout: base.njk
+section: partenaires
+titre_page: Nos partenaires
+permalink: /partenaires/
+---
+{% import "macros.njk" as m %}
+{{ m.hero("Ils nous accompagnent", "Nos partenaires", "Cabinets d'avocats, banques d'affaires, fonds et conseils financiers : nos partenaires accueillent nos stagiaires, interviennent dans les cours et soutiennent les projets de l'association.") }}
+<section class="blk" style="border-bottom:0"><div class="wrap"><div class="pgrid">{% for p in collections.partenaires %}{{ m.partnerCard(p) }}{% endfor %}</div>
+<div style="margin-top:48px;display:flex;gap:20px;align-items:center;flex-wrap:wrap"><p class="muted">Vous souhaitez rejoindre nos partenaires ?</p><a class="btn red" href="/#contact">Nous contacter <span class="arrow" aria-hidden="true">→</span></a></div></div></section>

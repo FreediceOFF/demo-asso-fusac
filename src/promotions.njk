@@ -1,0 +1,14 @@
+---
+layout: base.njk
+section: promotions
+titre_page: Promotions
+permalink: /promotions/
+---
+{% import "macros.njk" as m %}
+{{ m.hero("Les étudiants", "Promotions", "Chaque promotion est un petit groupe soudé. Cliquez sur une promotion pour découvrir sa photo et le parcours de chacun de ses étudiants.") }}
+<section class="blk" style="border-bottom:0"><div class="wrap"><div class="tgrid">
+{% for p in collections.promotions %}{% set n = (collections.eleves | where("promotion", p.data.annee)).length %}
+<a class="tomb" href="{{ p.url }}"><div class="ph">{% if p.data.photo %}<img src="{{ p.data.photo }}" alt="{{ p.data.titre }}" loading="lazy">{% endif %}</div>
+  <div class="tb"><span class="s">Master Fusions-Acquisitions</span><h3>{{ p.data.titre }}</h3><div class="rule"></div><span class="st"><b>{{ n }} étudiant{{ "s" if n > 1 }}</b> · {{ p.data.statut }}</span>{% if p.data.parrain %}<span class="s">Parrain : {{ p.data.parrain }}</span>{% endif %}</div></a>
+{% endfor %}
+</div></div></section>

@@ -1,0 +1,14 @@
+{
+  "name": "asso-fusac",
+  "version": "1.0.0",
+  "description": "Site de l'Asso FusAc",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6"
+  },
+  "type": "module",
+  "private": true
+}

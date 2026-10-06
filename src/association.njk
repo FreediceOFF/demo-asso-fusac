@@ -1,0 +1,16 @@
+---
+layout: base.njk
+section: association
+titre_page: L'association
+permalink: /association/
+---
+{% import "macros.njk" as m %}
+{{ m.hero("L'association", "Association", association.introduction) }}
+<section class="blk"><div class="wrap">
+  <div class="head"><div><span class="eyebrow">Tout au long de l'année</span><h2>Nos activités</h2></div></div>
+  <div class="agrid">{% for a in association.activites %}<article class="act"><span class="when">{{ a.periode }}</span><h3>{{ a.titre }}</h3><p>{{ a.texte }}</p></article>{% endfor %}</div>
+</div></section>
+<section class="blk" style="border-bottom:0"><div class="wrap">
+  <div class="head"><div><span class="eyebrow">{{ association.mandat }}</span><h2>Le bureau</h2></div><a class="btn red" href="/debats/">Découvrir le {{ site.projet_menu | firstPart(" · ") }} <span class="arrow" aria-hidden="true">→</span></a></div>
+  <div class="bureau">{% for b in association.bureau %}<div><span>{{ b.poste }}</span><b>{{ b.nom }}</b></div>{% endfor %}</div>
+</div></section>

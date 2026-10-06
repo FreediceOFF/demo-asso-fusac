@@ -1,0 +1,24 @@
+---
+layout: base.njk
+section: promotions
+---
+{% import "macros.njk" as m %}
+{% set promo = collections.promotions | findBy("annee", promotion) %}
+{% macro bloc(t, rows) %}<div class="tl"><h2>{{ t }}</h2>{% for r in rows %}<div class="it"><span class="d">{{ r.dates or r.annee }}</span><div><b>{{ r.titre or r.reference }}</b>{% if r.detail %}<span>{{ r.detail }}</span>{% endif %}</div></div>{% endfor %}</div>{% endmacro %}
+<div class="wrap"><div class="student fade">
+  <div class="card">
+    <div class="crumbs"><a href="/promotions/">Promotions</a>{% if promo %} / <a href="{{ promo.url }}">{{ promo.data.titre }}</a>{% endif %}</div>
+    <span class="av">{% if photo %}<img src="{{ photo }}" alt="">{% else %}{{ prenom | initiales(nom) }}{% endif %}</span>
+    <h1>{{ prenom }}<br>{{ nom }}</h1>
+    {% if promo %}<span class="badge">{{ promo.data.titre }} · {{ promo.data.statut }}</span>{% endif %}
+    {% if linkedin %}<a class="btn" href="{{ linkedin }}" target="_blank" rel="noopener">Profil LinkedIn ↗</a>{% endif %}
+  </div>
+  <div>
+    {% if poste_actuel %}<div class="poste"><span class="eyebrow">Poste actuel</span><b>{{ poste_actuel }}</b></div>{% endif %}
+    {% if parcours and parcours.length %}{{ bloc("Parcours", parcours) }}{% endif %}
+    {% if stages and stages.length %}{{ bloc("Stages", stages) }}{% endif %}
+    {% if publications and publications.length %}{{ bloc("Publications", publications) }}{% endif %}
+    {% if content | trim %}<div class="prose" style="margin-bottom:40px">{{ content | safe }}</div>{% endif %}
+    {% if promo %}<a class="btn" href="{{ promo.url }}">← Retour à la {{ promo.data.titre | lower }}</a>{% endif %}
+  </div>
+</div></div>

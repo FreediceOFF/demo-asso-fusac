@@ -1,0 +1,16 @@
+---
+layout: base.njk
+titre_page: Mentions légales
+permalink: /mentions-legales/
+---
+{% import "macros.njk" as m %}
+{{ m.hero("Informations", "Mentions légales") }}
+<div class="wrap" style="padding-block:48px 88px"><div class="prose">
+  <h3>Éditeur du site</h3>
+  <p>{{ site.nom }}, association loi 1901. Adresse : {{ site.adresse }}. Contact : {{ site.email_contact }}.</p>
+  <p>Directeur ou directrice de la publication : la présidence de l'association, en exercice.</p>
+  <h3>Hébergement</h3>
+  <p>Netlify, Inc., 101 2nd Street, San Francisco, CA 94105, États-Unis.</p>
+  <h3>Données personnelles</h3>
+  <p>Les informations envoyées par le formulaire de contact servent uniquement à vous répondre. Les fiches et photos des étudiants sont publiées avec leur accord. Pour demander la modification ou la suppression d'une information vous concernant, écrivez à {{ site.email_contact }}.</p>
+</div></div>

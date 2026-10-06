@@ -1,0 +1,27 @@
+---
+layout: base.njk
+section: formation
+titre_page: Formation
+permalink: /formation/
+---
+{% import "macros.njk" as m %}
+{{ m.hero("La formation", "Formation", formation.introduction) }}
+<section class="blk" style="border-bottom:0"><div class="wrap">
+  <div class="infobox">{% for i in formation.infos %}<div><span class="eyebrow">{{ i.label }}</span><b>{{ i.valeur }}</b><span>{{ i.detail }}</span></div>{% endfor %}</div>
+  <div class="filters" role="group" aria-label="Filtrer par année">
+    <button class="chip" type="button" data-y="Tout" aria-pressed="true">Toutes les années</button>
+    <button class="chip" type="button" data-y="M1" aria-pressed="false">M1</button>
+    <button class="chip" type="button" data-y="M2" aria-pressed="false">M2</button>
+  </div>
+  {% for sem in ["Semestre 1", "Semestre 2", "Semestre 3", "Semestre 4"] %}
+  {% set liste = collections.cours | where("semestre", sem) %}
+  {% if liste.length %}
+  <div class="sem" data-y="{{ liste[0].data.annee }}">
+    <div class="sem-h"><h3>{{ liste[0].data.annee }} · {{ sem }}</h3><span class="mono muted" style="font-size:13px">{{ liste | sumEcts }} ECTS</span></div>
+    {% for c in liste %}
+    <div class="course"><span class="code">{{ c.data.code }}</span><div><h4>{{ c.data.titre }}</h4><p>{{ c.data.description }}</p></div><div class="kv"><span>{% if c.data.heures %}<b>{{ c.data.heures }} h</b> cours{% else %}<b>—</b>{% endif %}</span><span><b>{{ c.data.ects }}</b> ECTS</span></div></div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% endfor %}
+</div></section>

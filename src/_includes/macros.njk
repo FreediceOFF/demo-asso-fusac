@@ -1,0 +1,22 @@
+{% macro hero(surtitre, titre, intro, fil) %}
+<section class="page-hero"><div class="wrap fade">
+  {% if fil %}<div class="crumbs">{{ fil | safe }}</div>{% endif %}
+  <div class="eyebrow" style="margin-top:{{ 18 if fil else 0 }}px">{{ surtitre }}</div>
+  <h1>{{ titre }}</h1>
+  {% if intro %}<p class="lead">{{ intro }}</p>{% endif %}
+</div></section>
+{% endmacro %}
+
+{% macro logo(p) %}{% if p.data.logo %}<img src="{{ p.data.logo }}" alt="{{ p.data.nom }}">{% else %}{% set mots = p.data.nom.split(" ") %}{{ mots[0] }}{% if mots.length > 1 %}<i>&nbsp;{{ mots.slice(1).join(" ") }}</i>{% endif %}{% endif %}{% endmacro %}
+
+{% macro partnerCard(p) %}
+<a class="pcard" href="{{ p.url }}"><div class="plogo">{{ logo(p) }}</div><div class="t">{{ p.data.type }} · {{ p.data.ville }}</div><div class="more">Voir la fiche <span class="arrow" aria-hidden="true">→</span></div></a>
+{% endmacro %}
+
+{% macro newsCard(a) %}
+<a class="ncard" href="{{ a.url }}"><div class="img">{% if a.data.image %}<img src="{{ a.data.image }}" alt="" loading="lazy">{% endif %}</div><div class="meta"><span class="tag">{{ a.data.categorie }}</span><span>{{ a.data.date_publication | dateFr }}</span></div><h3>{{ a.data.titre }}</h3><p>{{ a.data.chapeau }}</p></a>
+{% endmacro %}
+
+{% macro thumb(v, yt) %}{% set id = v.data.youtube | youtubeId %}{% if v.data.miniature %}<img src="{{ v.data.miniature }}" alt="" loading="lazy">{% elif id %}<img src="https://i.ytimg.com/vi/{{ id }}/hqdefault.jpg" alt="" loading="lazy">{% else %}<div class="thumb-ph"><em>DÉBATS · {{ v.data.episode }}</em><span>POUR</span><span>CONTRE</span></div>{% endif %}{% endmacro %}
+
+{% macro avatar(e) %}<span class="av">{% if e.data.photo %}<img src="{{ e.data.photo }}" alt="">{% else %}{{ e.data.prenom | initiales(e.data.nom) }}{% endif %}</span>{% endmacro %}

@@ -1,0 +1,17 @@
+{
+  "nom": "Asso FusAc",
+  "sous_titre": "Master Fusions-Acquisitions · Lyon 3",
+  "description": "Association des étudiants et diplômés du Master Fusions-Acquisitions de l'Université Jean Moulin Lyon 3.",
+  "bandeau_demo": true,
+  "texte_bandeau": "Prototype · Les noms, partenaires et contenus sont fictifs.",
+  "projet_menu": "Projet 1 · Débats",
+  "email_contact": "contact@asso-fusac.fr",
+  "email_partenariats": "partenariats@asso-fusac.fr",
+  "adresse": "Faculté de droit · Université Jean Moulin Lyon 3 · Lyon",
+  "linkedin": "https://www.linkedin.com",
+  "instagram": "https://www.instagram.com",
+  "youtube": "https://www.youtube.com",
+  "couleur_accent": "#C3102C",
+  "couleur_encre": "#141112",
+  "couleur_fond": "#FBFAF9"
+}

@@ -1,0 +1,20 @@
+---
+layout: base.njk
+section: promotions
+---
+{% import "macros.njk" as m %}
+{% set eleves = collections.eleves | where("promotion", annee) %}
+<section class="page-hero"><div class="wrap fade">
+  <div class="crumbs"><a href="/promotions/">Promotions</a> / {{ titre }}</div>
+  <div style="display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-top:18px">
+    <div><div class="eyebrow">{{ statut }}{% if parrain %} · Parrain : {{ parrain }}{% endif %}</div><h1>{{ titre }}</h1></div>
+    <span class="mono muted">{{ eleves.length }} étudiant{{ "s" if eleves.length > 1 }}</span>
+  </div>
+  {% if photo %}<div class="bigphoto"><img src="{{ photo }}" alt="Photo de la {{ titre | lower }}"></div>{% endif %}
+</div></section>
+<section class="blk" style="border-bottom:0"><div class="wrap">
+  <div class="head"><div><span class="eyebrow">Trombinoscope</span><h2>Les étudiants</h2></div></div>
+  <div class="trombi">
+  {% for e in eleves %}<a class="face" href="{{ e.url }}">{{ m.avatar(e) }}<b>{{ e.data.prenom }} {{ e.data.nom }}</b><span>{{ e.data.poste_actuel | firstPart(" · ") if e.data.poste_actuel else e.data.formation_initiale }}</span></a>{% endfor %}
+  </div>
+</div></section>

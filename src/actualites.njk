@@ -1,0 +1,11 @@
+---
+layout: base.njk
+section: actualites
+titre_page: Actualités
+permalink: /actualites/
+---
+{% import "macros.njk" as m %}
+{{ m.hero("Actualités", "Actualités", "Événements, conférences, compétitions et nouvelles des diplômés.") }}
+<section class="blk" style="border-bottom:0"><div class="wrap"><div class="nlist">
+{% for a in collections.actualites %}<a class="nrow" href="{{ a.url }}"><div class="d"><span>{{ a.data.date_publication | dateFr }}</span><span class="tag">{{ a.data.categorie }}</span></div><div><h3>{{ a.data.titre }}</h3><p>{{ a.data.chapeau }}</p></div><div class="img">{% if a.data.image %}<img src="{{ a.data.image }}" alt="" loading="lazy">{% endif %}</div></a>{% endfor %}
+</div></div></section>

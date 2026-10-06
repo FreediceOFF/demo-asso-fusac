@@ -1,0 +1,13 @@
+---
+layout: base.njk
+section: actualites
+---
+{% set autres = collections.actualites | whereNot(page.url) %}
+<div class="wrap"><article class="article fade">
+  <div class="crumbs"><a href="/actualites/">Actualités</a> / {{ categorie }}</div>
+  <h1>{{ titre }}</h1>
+  <div style="display:flex;gap:12px;align-items:center" class="mono muted"><span class="tag">{{ categorie }}</span><span style="font-size:13px">{{ date_publication | dateFr }}</span></div>
+  {% if image %}<div class="img"><img src="{{ image }}" alt=""></div>{% endif %}
+  <div class="prose">{% if chapeau %}<p style="font-size:21px;color:var(--ink)">{{ chapeau }}</p>{% endif %}{{ content | safe }}</div>
+  {% if autres.length %}<div style="margin-top:56px;border-top:2px solid var(--ink);padding-top:20px"><span class="eyebrow">À lire ensuite</span><a href="{{ autres[0].url }}" style="text-decoration:none;display:block;margin-top:10px"><h3 style="font-size:26px">{{ autres[0].data.titre }} <span class="arrow" aria-hidden="true">→</span></h3></a></div>{% endif %}
+</article></div>

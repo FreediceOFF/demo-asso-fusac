@@ -1,0 +1,31 @@
+{
+  "introduction": "Le Master est codirigé par deux enseignants-chercheurs dont les travaux couvrent l'ensemble du droit des opérations.",
+  "directeurs": [
+    {
+      "nom": "Pr. Hélène Marchand",
+      "fonction": "Professeure de droit privé",
+      "role": "Codirectrice du Master",
+      "photo": "",
+      "biographie": "Agrégée de droit privé, Hélène Marchand enseigne le droit des sociétés et le droit des contrats d'affaires. Avant de rejoindre l'université, elle a exercé plusieurs années en cabinet, au sein d'une équipe corporate / M&A.\n\nSes recherches portent sur les garanties de passif, les clauses de prix dans les cessions de contrôle et la gouvernance des sociétés non cotées.",
+      "themes": ["Garantie d'actif et de passif", "Clauses d'earn-out", "Pactes d'associés", "Gouvernance des SAS"],
+      "travaux": [
+        { "annee": "2025", "reference": "« Earn-out et obligation de loyauté du cessionnaire », Revue des sociétés (fictif)" },
+        { "annee": "2024", "reference": "Droit des cessions de droits sociaux, manuel, 2e éd. (fictif)" },
+        { "annee": "2023", "reference": "« La réforme des garanties et les opérations de LBO », Bulletin Joly (fictif)" }
+      ]
+    },
+    {
+      "nom": "Pr. Antoine Deschamps",
+      "fonction": "Professeur de droit des affaires",
+      "role": "Codirecteur du Master",
+      "photo": "",
+      "biographie": "Antoine Deschamps est spécialiste du droit financier et du droit boursier. Il enseigne les offres publiques, l'information financière et le contrôle des concentrations.\n\nIl anime chaque année le séminaire de restructurations et dirige plusieurs thèses consacrées aux fusions transfrontalières.",
+      "themes": ["Offres publiques", "Droit boursier", "Contrôle des concentrations", "Fusions transfrontalières"],
+      "travaux": [
+        { "annee": "2026", "reference": "« Les offres publiques de retrait », Revue de droit bancaire et financier (fictif)" },
+        { "annee": "2024", "reference": "Fusions et scissions transfrontalières, ouvrage collectif (fictif)" },
+        { "annee": "2022", "reference": "« Le rôle de l'AMF dans les prises de contrôle rampantes » (fictif)" }
+      ]
+    }
+  ]
+}

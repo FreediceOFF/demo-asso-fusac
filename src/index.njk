@@ -1,0 +1,72 @@
+---
+layout: base.njk
+section: accueil
+permalink: /
+---
+{% import "macros.njk" as m %}
+<section class="hero"><div class="wrap fade">
+  <div class="eyebrow">{{ accueil.surtitre }}</div>
+  <h1 style="margin-top:22px">Fusions<br><span class="amp">&amp;</span>&nbsp;Acquisitions</h1>
+  <div class="hero-grid">
+    <div>
+      <p>{{ accueil.accroche }}</p>
+      <div class="hero-cta"><a class="btn red" href="/formation/">Découvrir la formation <span class="arrow" aria-hidden="true">→</span></a><a class="btn" href="/promotions/">Nos promotions</a></div>
+    </div>
+    <div class="hero-facts">
+      <div><b class="mono">2</b><span>années, M1 et M2</span></div>
+      <div><b class="mono">{{ collections.partenaires.length }}</b><span>partenaires</span></div>
+      <div><b class="mono">{{ collections.promotions.length }}</b><span>promotions</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="blk"><div class="wrap"><div class="split">
+  <div><span class="eyebrow">Le Master</span><h2 style="font-size:clamp(32px,4.4vw,52px);font-weight:800;margin-top:14px">{{ accueil.presentation_titre }}</h2></div>
+  <div class="prose" style="font-size:17px">{{ accueil.presentation | paras | safe }}</div>
+</div></div></section>
+
+<section class="blk"><div class="wrap">
+  <div class="head"><div><span class="eyebrow">Objectifs de formation</span><h2>Ce que vous saurez faire</h2></div></div>
+  <div class="obj">
+    {% for o in accueil.objectifs %}<article><span class="k">{{ o.etape }}</span><h3>{{ o.titre }}</h3><p>{{ o.texte }}</p></article>{% endfor %}
+  </div>
+</div></section>
+
+<section class="blk word"><div class="wrap">
+  <span class="eyebrow">Le mot des directeurs</span>
+  <blockquote style="margin-top:24px">{{ accueil.mot_citation }}</blockquote>
+  <div class="body">{{ accueil.mot_texte | paras | safe }}</div>
+  <div class="sig">{% for d in equipe.directeurs %}<div><b>{{ d.nom }}</b><span>{{ d.role }}</span></div>{% endfor %}</div>
+  <div style="margin-top:32px"><a class="btn" style="border-color:var(--paper);color:var(--paper)" href="/directeurs/">Découvrir les directeurs <span class="arrow" aria-hidden="true">→</span></a></div>
+</div></section>
+
+<section class="blk"><div class="wrap">
+  <div class="head"><div><span class="eyebrow">Ils nous accompagnent</span><h2>Nos partenaires</h2></div><a class="btn" href="/partenaires/">Voir tous les partenaires <span class="arrow" aria-hidden="true">→</span></a></div>
+  <div class="pgrid">{% for p in collections.partenaires | limit(4) %}{{ m.partnerCard(p) }}{% endfor %}</div>
+</div></section>
+
+<section class="blk"><div class="wrap">
+  <div class="head"><div><span class="eyebrow">Actualités</span><h2>La vie du Master</h2></div><a class="btn" href="/actualites/">Toutes les actualités <span class="arrow" aria-hidden="true">→</span></a></div>
+  <div class="ngrid">{% for a in collections.actualites | limit(3) %}{{ m.newsCard(a) }}{% endfor %}</div>
+</div></section>
+
+<section class="blk" id="contact" style="border-bottom:0"><div class="wrap contact">
+  <div>
+    <span class="eyebrow">Contact</span>
+    <h2 style="font-size:clamp(32px,4.4vw,52px);font-weight:800;margin-top:14px">Nous écrire</h2>
+    <p class="muted" style="margin-top:16px;max-width:44ch">Cabinet, fonds ou entreprise intéressé par un partenariat, futur candidat ou ancien de la formation : le bureau vous répond sous une semaine.</p>
+    <div class="clist">
+      <div><span class="l">E-mail</span><span class="v"><span>{{ site.email_contact }}</span> <button class="copy" type="button" data-copy="{{ site.email_contact }}">Copier</button></span></div>
+      {% if site.email_partenariats %}<div><span class="l">Partenariats</span><span class="v"><span>{{ site.email_partenariats }}</span> <button class="copy" type="button" data-copy="{{ site.email_partenariats }}">Copier</button></span></div>{% endif %}
+      <div><span class="l">Adresse</span><span class="v" style="font-size:16px">{{ site.adresse }}</span></div>
+    </div>
+  </div>
+  <form class="cf" name="contact" method="POST" action="/merci/" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="contact">
+    <p hidden><label>Ne pas remplir <input name="bot-field"></label></p>
+    <div class="row"><label for="cf-nom">Nom<input id="cf-nom" name="nom" required autocomplete="name"></label><label for="cf-mail">E-mail<input id="cf-mail" name="email" type="email" required autocomplete="email"></label></div>
+    <label for="cf-objet">Objet<select id="cf-objet" name="objet"><option>Partenariat</option><option>Candidature au Master</option><option>Ancien étudiant</option><option>Autre demande</option></select></label>
+    <label for="cf-msg">Message<textarea id="cf-msg" name="message" required></textarea></label>
+    <div><button class="btn red" type="submit">Envoyer <span class="arrow" aria-hidden="true">→</span></button></div>
+  </form>
+</div></section>

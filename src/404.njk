@@ -1,0 +1,8 @@
+---
+layout: base.njk
+titre_page: Page introuvable
+permalink: /404.html
+---
+{% import "macros.njk" as m %}
+{{ m.hero("Erreur 404", "Cette page n'existe pas", "Elle a peut-être été déplacée ou supprimée.") }}
+<div class="wrap" style="padding-block:40px 80px"><a class="btn red" href="/">Retour à l'accueil</a></div>

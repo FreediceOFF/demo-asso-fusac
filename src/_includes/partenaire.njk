@@ -1,0 +1,22 @@
+---
+layout: base.njk
+section: partenaires
+---
+{% import "macros.njk" as m %}
+{% set moi = collections.partenaires | findBy("nom", nom) %}
+<div class="wrap"><div class="pd fade">
+  <div>
+    <div class="crumbs"><a href="/partenaires/">Partenaires</a> / {{ nom }}</div>
+    <div class="bigmark">{{ m.logo(moi) }}</div>
+    <div class="eyebrow" style="margin:22px 0 28px">{{ type }}</div>
+    <div class="prose" style="font-size:18px">{{ content | safe }}{% if avec_asso %}<h3 style="font-size:22px;margin-top:.5em">Avec l'{{ site.nom }}</h3><p>{{ avec_asso }}</p>{% endif %}</div>
+  </div>
+  <aside>
+    <div><span class="l">Activité</span><b>{{ type }}</b></div>
+    {% if ville %}<div><span class="l">Implantation</span><b>{{ ville }}</b></div>{% endif %}
+    {% if depuis %}<div><span class="l">Partenaire depuis</span><b class="mono">{{ depuis }}</b></div>{% endif %}
+    {% if site_web %}<a class="btn red" href="{{ site_web }}" target="_blank" rel="noopener">Visiter leur site ↗</a>{% endif %}
+  </aside>
+</div>
+<div class="head"><div><span class="eyebrow">Autres partenaires</span></div></div>
+<div class="pgrid" style="margin-bottom:80px">{% for p in collections.partenaires | whereNot(page.url) | limit(4) %}{{ m.partnerCard(p) }}{% endfor %}</div></div>
