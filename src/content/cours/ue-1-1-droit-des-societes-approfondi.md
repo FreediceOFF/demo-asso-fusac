@@ -1,10 +1,10 @@
 ---
-titre: "Droit des sociétés approfondi"
+titre: "Comptabilité"
 code: "UE 1.1"
 annee: "M1"
 semestre: "Semestre 1"
-heures: 36
+heures: 30
 ects: 6
 ordre: 1
-description: "Constitution, fonctionnement et gouvernance des sociétés commerciales. Étude approfondie de la SAS et de la SA, des droits des associés et de la responsabilité des dirigeants."
+description: "Description ..."
 ---
