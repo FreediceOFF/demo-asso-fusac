@@ -1,6 +1,6 @@
 ---
 titre: Sûretés
-code: UE1
+code: UE 1.4
 annee: M1
 semestre: Semestre 1
 heures: 30
