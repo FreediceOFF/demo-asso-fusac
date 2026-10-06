@@ -1,6 +1,6 @@
 ---
 titre: Fiscalité des entreprises (avec TD)
-code: UE1
+code: UE 1.2
 annee: M1
 semestre: Semestre 1
 heures: 46
