@@ -36,7 +36,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addCollection("cours", (api) =>
     glob("cours")(api).sort((a, b) => (a.data.ordre ?? 99) - (b.data.ordre ?? 99)));
 
-  eleventyConfig.addGlobalData("annee", new Date().getFullYear());
+  eleventyConfig.addGlobalData("annee_courante", new Date().getFullYear());
 
   // Filtres utilisés dans les gabarits
   eleventyConfig.addFilter("paras", (t) => String(t || "").split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean)
@@ -54,6 +54,20 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("skip", (arr, n) => (arr || []).slice(n));
   eleventyConfig.addFilter("pad2", (n) => String(n).padStart(2, "0"));
   eleventyConfig.addFilter("sumEcts", (arr) => (arr || []).reduce((s, c) => s + (Number(c.data.ects) || 0), 0));
+  // Regroupe les cours par semestre, quel que soit le nombre de cours ou de semestres.
+  // Un cours sans semestre renseigné s'affiche quand même, dans « Autres cours ».
+  eleventyConfig.addFilter("groupCours", (cours) => {
+    const groupes = new Map();
+    for (const c of cours || []) {
+      const sem = String(c.data.semestre || "").trim() || "Autres cours";
+      if (!groupes.has(sem)) groupes.set(sem, { semestre: sem, annee: String(c.data.annee || "").trim(), cours: [] });
+      const g = groupes.get(sem);
+      if (!g.annee && c.data.annee) g.annee = String(c.data.annee).trim();
+      g.cours.push(c);
+    }
+    const num = (s) => { const m = s.match(/\d+/); return m ? Number(m[0]) : 999; };
+    return [...groupes.values()].sort((a, b) => num(a.semestre) - num(b.semestre) || a.semestre.localeCompare(b.semestre, "fr"));
+  });
   eleventyConfig.addFilter("youtubeId", (url) => {
     if (!url) return "";
     const m = String(url).match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([A-Za-z0-9_-]{11})/);
