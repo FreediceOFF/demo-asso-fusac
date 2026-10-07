@@ -13,5 +13,7 @@
   "youtube": "https://www.youtube.com",
   "couleur_accent": "#1F8751",
   "couleur_encre": "#141112",
-  "couleur_fond": "#FBFAF9"
+  "couleur_fond": "#FBFAF9",
+  "formulaire_adresse": "",
+  "hebergeur": "Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, États-Unis."
 }

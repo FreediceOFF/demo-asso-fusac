@@ -61,12 +61,15 @@ permalink: /
       <div><span class="l">Adresse</span><span class="v" style="font-size:16px">{{ site.adresse }}</span></div>
     </div>
   </div>
-  <form class="cf" name="contact" method="POST" action="/merci/" data-netlify="true" netlify-honeypot="bot-field">
-    <input type="hidden" name="form-name" value="contact">
-    <p hidden><label>Ne pas remplir <input name="bot-field"></label></p>
+  {% if site.formulaire_adresse %}
+  <form class="cf" name="contact" method="POST" action="{{ site.formulaire_adresse }}">
+    <p hidden><label>Ne pas remplir <input name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
     <div class="row"><label for="cf-nom">Nom<input id="cf-nom" name="nom" required autocomplete="name"></label><label for="cf-mail">E-mail<input id="cf-mail" name="email" type="email" required autocomplete="email"></label></div>
     <label for="cf-objet">Objet<select id="cf-objet" name="objet"><option>Partenariat</option><option>Candidature au Master</option><option>Ancien étudiant</option><option>Autre demande</option></select></label>
     <label for="cf-msg">Message<textarea id="cf-msg" name="message" required></textarea></label>
     <div><button class="btn red" type="submit">Envoyer <span class="arrow" aria-hidden="true">→</span></button></div>
   </form>
+  {% else %}
+  <div class="clist" style="align-self:start"><div><span class="l">Le plus simple</span><span class="v" style="font-size:16px">Écrivez-nous directement à {{ site.email_contact }} : le bureau vous répond sous une semaine.</span></div></div>
+  {% endif %}
 </div></section>

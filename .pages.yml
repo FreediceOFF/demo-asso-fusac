@@ -305,6 +305,8 @@ content:
       - { name: linkedin, label: Lien LinkedIn, type: string }
       - { name: instagram, label: Lien Instagram, type: string }
       - { name: youtube, label: Lien de la chaîne YouTube, type: string }
+      - { name: formulaire_adresse, label: Adresse du formulaire de contact, type: string, description: "Adresse fournie par Formspree (https://formspree.io/f/…). Vide : le formulaire est remplacé par l'e-mail de contact." }
+      - { name: hebergeur, label: Hébergeur (mentions légales), type: string }
       - { name: couleur_accent, label: Couleur d'accent (rouge), type: string, description: "Code hexadécimal, ex. #C3102C" }
       - { name: couleur_encre, label: Couleur des textes (noir), type: string, description: "Ex. #141112" }
       - { name: couleur_fond, label: Couleur de fond (blanc), type: string, description: "Ex. #FBFAF9" }
